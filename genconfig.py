@@ -9,7 +9,7 @@ yesno=lambda:random.choice([0,1])
 configfile=open("./out.cfg","w+")
 
 # Fixed settings
-configfile.write("sets sv_hostname 'Servidor Achifaifantastico' \n")
+configfile.write("sets sv_hostname ^1Ach^8ifa^3ifa^2nta^4sti^6co! \n")
 configfile.write("sv_pure 1\n")
 configfile.write("seta timelimit 0\n")
 configfile.write("seta fraglimit %s\n"%raw_input("Fraglimit?\n>"))
@@ -20,7 +20,7 @@ if raw_input("Randomize vampire and health settings? (y/n)\n>")=="y":
   configfile.write("seta g_vampire_max_health %i\n"%random.randint(200,600))
   configfile.write("seta g_regen %f\n"%(random.randint(0,50)/10.))
   configfile.write("seta g_quadfactor %f\n"%(random.randint(10,50)/10.))
-  configfile.write("seta g_damagemodifier %i\n"%random.randint(300,700))
+  configfile.write("seta g_damagemodifier %i\n"%random.randint(400,600))
 
 # Misc game settings
 if raw_input("Randomize misc settings? (y/n)\n>")=="y":
