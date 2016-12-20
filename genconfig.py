@@ -24,7 +24,7 @@ if raw_input("Randomize vampire and health settings? (y/n)\n>")=="y":
 
 # Misc game settings
 if raw_input("Randomize misc settings? (y/n)\n>")=="y":
-  configfile.write("/g_awardpushing %i\n"%yesno())
+  configfile.write("seta g_awardpushing %i\n"%yesno())
   configfile.write("seta g_speed %i\n"%random.randint(220,420))
   configfile.write("seta g_knockback %i\n"%random.randint(800,1200))
   configfile.write("seta g_gravity %i\n"%random.randint(650,950))
@@ -33,7 +33,7 @@ if raw_input("Randomize misc settings? (y/n)\n>")=="y":
 # Game mode setting
 print "Pick the game mode"
 print "\n".join("%i - %s"%(i,s) for i,s in enumerate(gamemodes.keys()))
-configfile.write("/g_gametype %s\n"%gamemodes[gamemodes.keys()[int(raw_input(">"))]]+"\n")
+configfile.write("seta g_gametype %s\n"%gamemodes[gamemodes.keys()[int(raw_input(">"))]]+"\n")
 
 # Randomize removal of items from arena
 if raw_input("Randomize item restrictions? (y/n)\n>")=="y":
@@ -42,8 +42,8 @@ if raw_input("Randomize item restrictions? (y/n)\n>")=="y":
 
 # Select mode
 ir=raw_input("Choose [I]nstagib, [R]ockets or [N]one\n>").lower()
-if ir=="i": configfile.write("/g_instagib 1")
-elif ir=="r": configfile.write("/g_rockets 1")
+if ir=="i": configfile.write("seta g_instagib 1")
+elif ir=="r": configfile.write("seta g_rockets 1")
   
 
 
