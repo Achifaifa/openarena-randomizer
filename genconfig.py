@@ -9,22 +9,26 @@ yesno=lambda:random.choice([0,1])
 configfile=open("./out.cfg","w+")
 
 # Fixed settings
-configfile.write("/set timelimit 0\n")
-configfile.write("/set fraglimit %s\n"%raw_input("Fraglimit?\n>"))
-configfile.write("/g_awardpushing %i\n"%yesno())
+configfile.write("sets sv_hostname 'Servidor Achifaifantastico' \n")
+configfile.write("sv_pure 1\n")
+configfile.write("seta timelimit 0\n")
+configfile.write("seta fraglimit %s\n"%raw_input("Fraglimit?\n>"))
 
 # Vampire and health settings
-configfile.write("/g_vampire %i\n"%yesno())
-configfile.write("/g_vampire_max_health %i\n"%random.randint(200,600))
-configfile.write("/g_regen %f\n"%(random.randint(0,50)/10.))
-configfile.write("/g_quadfactor %f\n"%(random.randint(10,50)/10.))
-configfile.write("/g_damagemodifier %i\n"%random.randint(300,700))
+if raw_input("Randomize vampire and health settings? (y/n)\n>")=="y":
+  configfile.write("seta g_vampire %i\n"%yesno())
+  configfile.write("seta g_vampire_max_health %i\n"%random.randint(200,600))
+  configfile.write("seta g_regen %f\n"%(random.randint(0,50)/10.))
+  configfile.write("seta g_quadfactor %f\n"%(random.randint(10,50)/10.))
+  configfile.write("seta g_damagemodifier %i\n"%random.randint(300,700))
 
 # Misc game settings
-configfile.write("/g_speed %i\n"%random.randint(220,420))
-configfile.write("/g_knockback %i\n"%random.randint(800,1200))
-configfile.write("/g_gravity %i\n"%random.randint(650,950))
-configfile.write("/g_respawntime %i\n"%random.randint(1,5))
+if raw_input("Randomize misc settings? (y/n)\n>")=="y":
+  configfile.write("/g_awardpushing %i\n"%yesno())
+  configfile.write("seta g_speed %i\n"%random.randint(220,420))
+  configfile.write("seta g_knockback %i\n"%random.randint(800,1200))
+  configfile.write("seta g_gravity %i\n"%random.randint(650,950))
+  configfile.write("seta g_respawntime %i\n"%random.randint(1,5))
 
 # Game mode setting
 print "Pick the game mode"
@@ -34,7 +38,7 @@ configfile.write("/g_gametype %s\n"%gamemodes[gamemodes.keys()[int(raw_input(">"
 # Randomize removal of items from arena
 if raw_input("Randomize item restrictions? (y/n)\n>")=="y":
   for i in weaponres:
-    configfile.write("/set disable_%s '%i'\n"%(i,yesno()))
+    configfile.write("seta disable_%s '%i'\n"%(i,yesno()))
 
 # Select mode
 ir=raw_input("Choose [I]nstagib, [R]ockets or [N]one\n>").lower()
